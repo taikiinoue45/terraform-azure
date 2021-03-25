@@ -12,5 +12,5 @@ variable "prefix" {
 
 variable "docker_image" {
   type    = string
-  default = "registry20210324165333/reception-func:latest"
+  default = "reception-func:latest"
 }
