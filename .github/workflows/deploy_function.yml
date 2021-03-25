@@ -1,0 +1,26 @@
+name: deploy_function
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Login to azure container registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.ACR_LOGIN_SERVER }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Docker build and push
+        run: |
+          docker build reception/function -t ${{ secrets.ACR_LOGIN_SERVER }}/reception-func:${{ github.sha }}
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/reception-func:${{ github.sha }}
