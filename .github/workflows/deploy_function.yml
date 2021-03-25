@@ -22,5 +22,5 @@ jobs:
 
       - name: Docker build and push
         run: |
-          docker build reception/function -t ${{ secrets.ACR_LOGIN_SERVER }}/reception-func:${{ github.sha }}
-          docker push ${{ secrets.ACR_LOGIN_SERVER }}/reception-func:${{ github.sha }}
+          docker build reception/function -t ${{ secrets.ACR_LOGIN_SERVER }}/reception-func:latest
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/reception-func:latest

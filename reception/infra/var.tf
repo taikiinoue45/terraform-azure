@@ -12,5 +12,5 @@ variable "prefix" {
 
 variable "docker_image" {
   type    = string
-  default = "azurefunctionsimage:v1.0.0"
+  default = "registry20210324165333/reception-func:latest"
 }
