@@ -25,14 +25,14 @@ jobs:
       with:
         terraform_version: 0.13.6
 
-    - name: Change directory
-      run: cd reception/infra
-
     - name: Terraform init
       run: terraform init
+      working-directory: ./reception/infra
 
     - name: Terraform plan
       run: terraform plan -no-color
+      working-directory: ./reception/infra
 
     - name: Terraform apply
       run: terraform apply -auto-approve
+      working-directory: ./reception/infra
