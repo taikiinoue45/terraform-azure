@@ -1,4 +1,4 @@
-name: format_tf
+name: deploy_infra
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  format_tf:
+  deploy_infra:
     runs-on: ubuntu-latest
 
     env:
