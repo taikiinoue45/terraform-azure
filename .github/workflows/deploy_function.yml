@@ -22,12 +22,12 @@ jobs:
     - name: Login to azure container registry
       uses: azure/docker-login@v1
       with:
-        login-server: $ACR_LOGIN_SERVER
-        username: $ACR_USERNAME
-        password: $ACR_PASSWORD
+        login-server: ${ACR_LOGIN_SERVER}
+        username: ${ACR_USERNAME}
+        password: ${ACR_PASSWORD}
 
     - name: Docker build and push
       run: |
         cd reception/function
-        docker build -t $ACR_LOGIN_SERVER/reception-func:latest .
-        docker push $ACR_LOGIN_SERVER/reception-func:latest
+        docker build -t ${ACR_LOGIN_SERVER}/reception-func:latest .
+        docker push ${ACR_LOGIN_SERVER}/reception-func:latest
