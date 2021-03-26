@@ -13,7 +13,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_storage_container" "container" {
-  name                  = "${var.prefix}"
+  name                  = "samples-workitems"
   storage_account_name  = data.azurerm_storage_account.storage.name
   container_access_type = "private"
 }
