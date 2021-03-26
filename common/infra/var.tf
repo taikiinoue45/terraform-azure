@@ -6,6 +6,6 @@ variable "tags" {
 }
 
 variable "suffix" {
-  type = string
+  type    = string
   default = "20210326102834"
 }
