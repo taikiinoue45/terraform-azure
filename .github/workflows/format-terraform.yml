@@ -1,4 +1,4 @@
-name: format_tf
+name: format-terraform
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  format_tf:
+  format-terraform:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +17,7 @@ jobs:
     - name: Setup terraform
       uses: hashicorp/setup-terraform@v1
       with:
-        terraform_version: 0.13.6
+        terraform_version: ${{ secrets.TERRAFORM_VERSION }}
 
     - name: Check terraform format
       run: terraform fmt -recursive -check
