@@ -12,6 +12,12 @@ provider "azurerm" {
   features {}
 }
 
+resource "azurerm_storage_container" "container" {
+  name                  = "${var.prefix}"
+  storage_account_name  = azurerm_storage_account.storage.name
+  container_access_type = "private"
+}
+
 resource "azurerm_app_service_plan" "plan" {
   name                = "${var.prefix}-plan"
   tags                = var.tags
