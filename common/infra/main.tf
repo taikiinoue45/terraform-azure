@@ -19,7 +19,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_storage_account" "storage" {
-  name                     = "storage20210324165333"
+  name                     = "storage${var.suffix}"
   tags                     = var.tags
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
@@ -29,7 +29,7 @@ resource "azurerm_storage_account" "storage" {
 }
 
 resource "azurerm_container_registry" "registry" {
-  name                = "registry20210324165333"
+  name                = "registry${var.suffix}"
   tags                = var.tags
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location

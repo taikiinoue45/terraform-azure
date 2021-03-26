@@ -4,3 +4,8 @@ variable "tags" {
     microservice = "common"
   }
 }
+
+variable "suffix" {
+  type = string
+  default = "20210326102834"
+}
