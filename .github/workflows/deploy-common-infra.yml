@@ -3,7 +3,7 @@ name: deploy-common-infra
 on:
   push:
     branches: [main]
-    paths: [common/infra]
+    paths: [common/infra/**]
 
 jobs:
   deploy-common-infra:

@@ -3,7 +3,7 @@ name: deploy-reception-infra
 on:
   push:
     branches: [main]
-    paths: [reception/infra]
+    paths: [reception/infra/**]
 
 jobs:
   deploy-reception-infra:

@@ -3,7 +3,7 @@ name: deploy-reception-func
 on:
   push:
     branches: [main]
-    paths: [reception/func]
+    paths: [reception/func/**]
 
 jobs:
   deploy-reception-func:
