@@ -1,4 +1,4 @@
-name: deploy_function
+name: deploy-reception-func
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
     paths: [reception/func]
 
 jobs:
-  deploy_function:
+  deploy-reception-func:
     runs-on: ubuntu-latest
 
     env:
@@ -27,6 +27,6 @@ jobs:
 
     - name: Docker build and push
       run: |
-        cd reception/function
         docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/reception-func:latest .
         docker push ${{ secrets.ACR_LOGIN_SERVER }}/reception-func:latest
+      working-directory: ./reception/function
