@@ -1,0 +1,41 @@
+name: deploy-reception-infra
+
+on:
+  push:
+    branches: [main]
+    paths: [reception/infra]
+
+jobs:
+  deploy-reception-infra:
+    runs-on: ubuntu-latest
+
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: ${{ secrets.TERRAFORM_VERSION }}
+
+    - name: Terraform init
+      run: terraform init
+      working-directory: ./reception/infra
+
+    - name: Terraform plan
+      run: terraform plan -no-color
+      working-directory: ./reception/infra
+
+    - name: Terraform destroy
+      run: terraform destroy -auto-approve
+      working-directory: ./reception/infra
+
+    - name: Terraform apply
+      run: terraform apply -auto-approve
+      working-directory: ./reception/infra

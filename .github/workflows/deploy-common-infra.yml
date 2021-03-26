@@ -1,13 +1,12 @@
-name: deploy_infra
+name: deploy-common-infra
 
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+    paths: [common/infra]
 
 jobs:
-  deploy_infra:
+  deploy-common-infra:
     runs-on: ubuntu-latest
 
     env:
@@ -23,20 +22,20 @@ jobs:
     - name: Setup terraform
       uses: hashicorp/setup-terraform@v1
       with:
-        terraform_version: 0.13.6
+        terraform_version: ${{ secrets.TERRAFORM_VERSION }}
 
     - name: Terraform init
       run: terraform init
-      working-directory: ./reception/infra
+      working-directory: ./common/infra
 
     - name: Terraform plan
       run: terraform plan -no-color
-      working-directory: ./reception/infra
+      working-directory: ./common/infra
 
     - name: Terraform destroy
       run: terraform destroy -auto-approve
-      working-directory: ./reception/infra
+      working-directory: ./common/infra
 
     - name: Terraform apply
       run: terraform apply -auto-approve
-      working-directory: ./reception/infra
+      working-directory: ./common/infra

@@ -3,8 +3,7 @@ name: deploy_function
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+    paths: [reception/func]
 
 jobs:
   deploy_function:
