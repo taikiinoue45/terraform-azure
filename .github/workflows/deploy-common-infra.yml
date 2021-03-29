@@ -32,10 +32,6 @@ jobs:
       run: terraform plan -no-color
       working-directory: ./common/infra
 
-    - name: Terraform destroy
-      run: terraform destroy -auto-approve
-      working-directory: ./common/infra
-
     - name: Terraform apply
       run: terraform apply -auto-approve
       working-directory: ./common/infra
