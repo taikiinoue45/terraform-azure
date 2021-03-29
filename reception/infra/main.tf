@@ -19,7 +19,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_storage_container" "container" {
-  name                  = "samples-workitems"
+  name                  = "reception"
   storage_account_name  = data.azurerm_storage_account.storage.name
   container_access_type = "private"
 }
