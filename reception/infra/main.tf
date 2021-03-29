@@ -4,7 +4,7 @@ terraform {
     resource_group_name  = "tfstate"
     storage_account_name = "tfstate20210329114422"
     container_name       = "tfstate"
-    key                  = "prod.terraform.tfstate"
+    key                  = "reception.terraform.tfstate"
   }
   required_providers {
     azurerm = {
